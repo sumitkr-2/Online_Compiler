@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path'); // Use for resolving paths
 
 const app = express();
 const RAPIDAPI_KEY = '3ad8dbee1emshb1de8abb7120ab3p1896a8jsn63e4223f5695'; // Replace with your real RapidAPI key
@@ -7,12 +8,12 @@ const RAPIDAPI_KEY = '3ad8dbee1emshb1de8abb7120ab3p1896a8jsn63e4223f5695'; // Re
 app.use(cors());
 app.use(express.json());
 
-// Serve frontend files from "public" folder
-app.use(express.static('public'));
+// Serve frontend files from the root folder
+app.use(express.static(__dirname));  // 🟢 changed from 'public' to __dirname
 
-// Test route (optional)
+// Test route - serve index.html from root
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(path.join(__dirname, 'index.html')); // 🟢 changed path
 });
 
 // Judge0 Compiler API route
@@ -33,21 +34,20 @@ app.post('/run', async (req, res) => {
     const submissionData = await submissionRes.json();
     const token = submissionData.token;
 
-    // Polling for result
     let result;
     while (true) {
       const resultRes = await fetch(`https://judge0-ce.p.rapidapi.com/submissions/${token}?base64_encoded=false`, {
         method: 'GET',
         headers: {
           'x-rapidapi-host': 'judge0-ce.p.rapidapi.com',
-          'x-rapidapi-key': '3ad8dbee1emshb1de8abb7120ab3p1896a8jsn63e4223f5695',
+          'x-rapidapi-key': RAPIDAPI_KEY,
         },
       });
 
       result = await resultRes.json();
-
       if (result.status.id >= 3) break;
-      await new Promise(resolve => setTimeout(resolve, 1000)); // wait 1 second
+
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
     res.json(result);
