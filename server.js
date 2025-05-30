@@ -3,7 +3,7 @@ const cors = require('cors');
 const path = require('path'); // Use for resolving paths
 
 const app = express();
-const RAPIDAPI_KEY = '3ad8dbee1emshb1de8abb7120ab3p1896a8jsn63e4223f5695'; // Replace with your real RapidAPI key
+const RAPIDAPI_KEY = '......................'; // Replace with your real RapidAPI key
 
 app.use(cors());
 app.use(express.json());
