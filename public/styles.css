@@ -1,0 +1,176 @@
+/* General Body */
+body {
+  background: #0f2027;  /* dark blue gradient */
+  background: linear-gradient(90deg, #2c5364, #203a43, #0f2027);
+  color: #f1f1f1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: 1.2px;
+  text-shadow: 1px 1px 5px #06bcee;
+}
+
+/* Container Flex */
+.compiler-container {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Left and Right Panels */
+.left-panel, .right-panel {
+  background: #1f2937;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 25px rgb(0 0 0 / 0.6);
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 320px;
+}
+
+/* Top row in left panel for language + run button */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Form labels and selects */
+label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  user-select: none;
+  color: #b8c6db;
+  text-shadow: 0 0 2px #03a9f4;
+}
+
+select, textarea {
+  font-family: 'Fira Code', monospace, monospace;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  padding: 0.75rem 1rem;
+  background: #111827;
+  color: #e0e6f0;
+  box-shadow: inset 0 0 8px #0e4c92;
+  resize: vertical;
+  transition: box-shadow 0.3s ease;
+  min-height: 3rem;
+}
+
+select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 12px #06bcee;
+  background: #0d1a2b;
+}
+
+/* Textarea code size */
+#code {
+  min-height: 450px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  width: 100%;
+  letter-spacing: 0.03em;
+}
+
+/* Output box */
+#output {
+  background: #000814;
+  color: #00ffae;
+  font-family: 'Fira Mono', monospace, monospace;
+  font-size: 1rem;
+  line-height: 1.3;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00ffaeaa;
+  height: 500px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  user-select: text;
+  transition: background-color 0.4s ease;
+}
+
+/* Buttons style */
+.btn-run {
+  background: #06bcee;
+  color: #0f2027;
+  font-weight: 700;
+  padding: 0.6rem 1.8rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px #06bcee88;
+  transition: all 0.3s ease;
+  border: none;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.btn-run:hover {
+  background: #03a9f4;
+  box-shadow: 0 6px 25px #03a9f4bb;
+  color: #e1f5fe;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.btn-clear {
+  background: transparent;
+  border: 2px solid #06bcee;
+  color: #06bcee;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.btn-clear:hover {
+  background: #06bcee;
+  color: #0f2027;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .compiler-container {
+    flex-direction: column;
+  }
+  .left-panel, .right-panel {
+    min-width: 100%;
+  }
+  #output {
+    height: 280px;
+  }
+}
+
+
+/* Wider language select */
+
+
+/* Footer copyright */
+footer {
+  margin-top: 3rem;
+  color: #777;
+  font-size: 0.9rem;
+  user-select: none;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 2px #0a74d1;
+}
